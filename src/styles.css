@@ -28,3 +28,10 @@ li {
     margin-left: 40px;
 }
 
+.error {
+    color: red;
+}
+
+:invalid {
+    outline: red;
+}
