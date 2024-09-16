@@ -7,61 +7,69 @@
 </head>
 <body>
     
-    <form action="#" method="post" novalidate>
-        
-        <ul>
-            <li>
-                <label for="first-name">First Name:</label>
-                <input type="text" id="first-name" name="first-name" required>
-            </li>
-            <li>
-                <label for="last-name">Last Name:</label>
-                <input type="text" id="last-name" name="last-name" required>
-            </li>
-        </ul>
 
-        <ul>
-            <li>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </li>
-            <li>
-                <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone" min="10" max="10" required>
-            </li>
-        </ul>
+    <div class="content">
+        <h1>Welcome to this awesome community!</h1>
 
-        <ul>
-            <li>
-                <label for="country">Country:</label>
-                <select id="country" name="country" required>
-                    <option value="">Select a country</option>
-                    <option value="ch">Switzerland</option>
-                    <option value="fr">France</option>
-                    <option value="de">Germany</option>
-                    <option value="nl">The Netherlands</option>
-                    <option value="us">USA</option>
-                </select>
-            </li>
-            <li>
-                <label for="zip">ZIP Code:</label>
-                <input type="text" id="zip" name="zip" required>
-            </li>
-        </ul>
+        <div class="intro">
+            Here is some cool info about our website and community that will make you want to sign up woo!
+        </div>
+        <form action="#" method="post" novalidate>
+            <ul>
+                <li>
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                </li>
+                <li>
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </li>
+            </ul>
+    
+            <ul>
+                <li>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </li>
+                <li>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" min="10" max="10" required>
+                </li>
+            </ul>
+    
+            <ul>
+                <li>
+                    <label for="country">Country:</label>
+                    <select id="country" name="country" required>
+                        <option value="">Select a country</option>
+                        <option value="ch">Switzerland</option>
+                        <option value="fr">France</option>
+                        <option value="de">Germany</option>
+                        <option value="nl">The Netherlands</option>
+                        <option value="us">USA</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="zip">ZIP Code:</label>
+                    <input type="text" id="zip" name="zip" required>
+                </li>
+            </ul>
+    
+            <ul>
+                <li>
+                    <label for="password">Password:</label>
+                    <input type="text" name="password" id="password" minlength="8" required>
+                </li>
+                <li>
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="text" name="confirm-password" id="confirm-password" minlength="8" required>
+                </li>
+            </ul>
+    
+            <button id="submit-form">Create Account</button>
+        </form>
+    </div>
 
-        <ul>
-            <li>
-                <label for="password">Password:</label>
-                <input type="text" name="password" id="password" minlength="8" required>
-            </li>
-            <li>
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="text" name="confirm-password" id="confirm-password" minlength="8" required>
-            </li>
-        </ul>
-
-        <button>Create Account</button>
-    </form>
 
 </body>
 </html>

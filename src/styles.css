@@ -1,0 +1,30 @@
+
+h1, .intro {
+    padding-left: 40px;
+}
+
+
+form {
+    margin-top: 40px;
+    max-width: 400px;
+}
+
+/* each row of the form */
+ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Form inputs and labels */
+li {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+
+/* form button */
+#submit-form {
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
