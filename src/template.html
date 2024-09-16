@@ -14,15 +14,17 @@
         <div class="intro">
             Here is some cool info about our website and community that will make you want to sign up woo!
         </div>
-        <form action="#" method="post" novalidate>
+        <form action="#" novalidate>
             <ul>
                 <li>
                     <label for="first-name">First Name:</label>
                     <input type="text" id="first-name" name="first-name" required>
+                    <div class="error"></div>
                 </li>
                 <li>
                     <label for="last-name">Last Name:</label>
                     <input type="text" id="last-name" name="last-name" required>
+                    <div class="error"></div>
                 </li>
             </ul>
     
@@ -30,10 +32,12 @@
                 <li>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
+                    <div class="error"></div>
                 </li>
                 <li>
                     <label for="phone">Phone:</label>
                     <input type="tel" id="phone" name="phone" min="10" max="10" required>
+                    <div class="error"></div>
                 </li>
             </ul>
     
@@ -48,21 +52,25 @@
                         <option value="nl">The Netherlands</option>
                         <option value="us">USA</option>
                     </select>
+                    <div class="error"></div>
                 </li>
                 <li>
                     <label for="zip">ZIP Code:</label>
                     <input type="text" id="zip" name="zip" required>
+                    <div class="error"></div>
                 </li>
             </ul>
     
             <ul>
                 <li>
                     <label for="password">Password:</label>
-                    <input type="text" name="password" id="password" minlength="8" required>
+                    <input type="password" name="password" id="password" minlength="8" required>
+                    <div class="error"></div>
                 </li>
                 <li>
                     <label for="confirm-password">Confirm Password:</label>
-                    <input type="text" name="confirm-password" id="confirm-password" minlength="8" required>
+                    <input type="password" name="confirm-password" id="confirm-password" minlength="8" required>
+                    <div class="error"></div>
                 </li>
             </ul>
     
