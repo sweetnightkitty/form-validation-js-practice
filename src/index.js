@@ -12,16 +12,6 @@ const zip = document.getElementById("zip");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirm-password");
 
-export const inputs = [
-    firstName,
-    lastName,
-    email,
-    phone,
-    country,
-    zip,
-    password,
-    confirmPassword,
-];
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -62,67 +52,55 @@ confirmPassword.addEventListener("change", () => {
 
 
 function validateForm() {
-    validateEmptyInputs();
+    validateFirstName();
+    validateLastName();
     validateEmail();
     validatePhone();
+    validateCountry();
     validateZip();
     validatePassword();
     validateConfirmPassword();
 }
 
-function validateEmptyInputs() {
+
+function validateFirstName() {
     if(firstName.validity.valueMissing) {
         const message = "Please provide your first name";
         setErrorMessage(firstName, message);
     }
+}
 
+function validateLastName() {
     if(lastName.validity.valueMissing) {
         const message = "Please provide your last name";
         setErrorMessage(lastName, message);
     }
-
-    if(email.validity.valueMissing) {
-        const message = "Please provide your email address";
-        setErrorMessage(email, message);
-    }
-
-    if(phone.validity.valueMissing) {
-        const message = "Please provide your phone number";
-        setErrorMessage(phone, message);
-    }
-
-    if(country.validity.valueMissing) {
-        const message = "Please choose your country of residence";
-        setErrorMessage(country, message);
-    }
-
-    if(zip.validity.valueMissing) {
-        const message = "Please provide your zip code";
-        setErrorMessage(zip, message);
-    }
-
-    if(password.validity.valueMissing) {
-        const message = "Please choose a password";
-        setErrorMessage(password, message);
-    }
-
-    if(confirmPassword.validity.valueMissing) {
-        const message = "Please type your password again";
-        setErrorMessage(confirmPassword, message);
-    }
 }
 
 function validateEmail() {
-    if(email.validity.typeMismatch) {
+    if(email.validity.valueMissing) {
+        const message = "Please provide your email address";
+        setErrorMessage(email, message);
+    } else if(email.validity.typeMismatch) {
         const message = "Please provide a valid email address";
         setErrorMessage(email, message);
     }
 }
 
 function validatePhone() {
-    const message = "Please provide a valid 10 digit phone number without any spaces or dashes";
-    if(phone.validity.patternMismatch) {
+    if(phone.validity.valueMissing) {
+        const message = "Please provide your phone number";
         setErrorMessage(phone, message);
+    } else if(phone.validity.patternMismatch) {
+        const message = "Please provide a valid 10 digit phone number without any spaces or dashes";
+        setErrorMessage(phone, message);
+    }
+}
+
+function validateCountry() {
+    if(country.validity.valueMissing) {
+        const message = "Please choose your country of residence";
+        setErrorMessage(country, message);
     }
 }
 
@@ -150,22 +128,39 @@ function validateZip() {
         ],
     };
 
-
-    if(!(country.validity.valueMissing) && !(zip.validity.valueMissing)) {
+    if(country.validity.valueMissing) {
+        const message = "Please select a country first";
+        setErrorMessage(zip, message);
+    } else if(zip.validity.valueMissing) {
+        const message = "Please provide your zip code";
+        setErrorMessage(zip, message);
+    } else {
         const selectedCountry = getCountry();
         const pattern =  zipCodeFormats[selectedCountry][0];
         const message = zipCodeFormats[selectedCountry][1];
+
         zip.setAttribute("pattern", pattern);
-        setErrorMessage(zip, message);
-    } else {
-        const message = "Please select a country first";
-        setErrorMessage(zip, message);
+        if(zip.validity.patternMismatch) {
+            setErrorMessage(zip, message);
+        }
     }
- 
+}
+
+function validatePassword() {
+    if(password.validity.valueMissing) {
+        const message = "Please choose a password";
+        setErrorMessage(password, message);
+    } else if(password.validity.tooShort) {
+        const message = "Password must be at least 8 characters long";
+        setErrorMessage(password, message);
+    }
 }
 
 function validateConfirmPassword() {
-    if(password.value != confirmPassword.value) {
+    if(confirmPassword.validity.valueMissing) {
+        const message = "Please type your password again";
+        setErrorMessage(confirmPassword, message);
+    } else if(password.value != confirmPassword.value) {
         const message = "Passwords do not match";
         setErrorMessage(confirmPassword, message);
     }
@@ -175,12 +170,9 @@ function getCountry() {
     return country.value;
 }
 
-function validatePassword() {
-    if(password.validity.tooShort) {
-        const message = "Password must be at least 8 characters long";
-        setErrorMessage(password, message);
-    }
-}
+
+
+
 
 //Intakes the selected input, and returns the error div for it
 function getErrorDiv(input) {
