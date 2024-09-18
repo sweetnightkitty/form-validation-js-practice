@@ -2,6 +2,9 @@ export function validateFirstName(firstName) {
     if(firstName.validity.valueMissing) {
         const message = "Please provide your first name";
         setErrorMessage(firstName, message);
+        return true;
+    } else {
+        setErrorMessage(firstName, "");
     }
 }
 
@@ -9,6 +12,9 @@ export function validateLastName(lastName) {
     if(lastName.validity.valueMissing) {
         const message = "Please provide your last name";
         setErrorMessage(lastName, message);
+        return true;
+    } else {
+        setErrorMessage(lastName, "");
     }
 }
 
@@ -16,9 +22,13 @@ export function validateEmail(email) {
     if(email.validity.valueMissing) {
         const message = "Please provide your email address";
         setErrorMessage(email, message);
+        return true;
     } else if(email.validity.typeMismatch) {
         const message = "Please provide a valid email address";
         setErrorMessage(email, message);
+        return true;
+    } else {
+        setErrorMessage(email, "");
     }
 }
 
@@ -26,9 +36,13 @@ export function validatePhone(phone) {
     if(phone.validity.valueMissing) {
         const message = "Please provide your phone number";
         setErrorMessage(phone, message);
+        return true;
     } else if(phone.validity.patternMismatch) {
         const message = "Please provide a valid 10 digit phone number without any spaces or dashes";
         setErrorMessage(phone, message);
+        return true;
+    } else {
+        setErrorMessage(phone, "");
     }
 }
 
@@ -36,6 +50,9 @@ export function validateCountry(country) {
     if(country.validity.valueMissing) {
         const message = "Please choose your country of residence";
         setErrorMessage(country, message);
+        return true;
+    } else {
+        setErrorMessage(country, "");
     }
 }
 
@@ -66,9 +83,11 @@ export function validateZip(country, zip) {
     if(country.validity.valueMissing) {
         const message = "Please select a country first";
         setErrorMessage(zip, message);
+        return true;
     } else if(zip.validity.valueMissing) {
         const message = "Please provide your zip code";
         setErrorMessage(zip, message);
+        return true;
     } else {
         const selectedCountry = country.value;
         const pattern =  zipCodeFormats[selectedCountry][0];
@@ -77,6 +96,9 @@ export function validateZip(country, zip) {
         zip.setAttribute("pattern", pattern);
         if(zip.validity.patternMismatch) {
             setErrorMessage(zip, message);
+            return true;
+        } else {
+            setErrorMessage(zip, "");
         }
     }
 }
@@ -85,9 +107,13 @@ export function validatePassword(password) {
     if(password.validity.valueMissing) {
         const message = "Please choose a password";
         setErrorMessage(password, message);
+        return true;
     } else if(password.validity.tooShort) {
         const message = "Password must be at least 8 characters long";
         setErrorMessage(password, message);
+        return true;
+    } else {
+        setErrorMessage(password, "");
     }
 }
 
@@ -95,9 +121,13 @@ export function validateConfirmPassword(password, confirmPassword) {
     if(confirmPassword.validity.valueMissing) {
         const message = "Please type your password again";
         setErrorMessage(confirmPassword, message);
+        return true;
     } else if(password.value != confirmPassword.value) {
         const message = "Passwords do not match";
         setErrorMessage(confirmPassword, message);
+        return true;
+    } else {
+        setErrorMessage(confirmPassword, "");
     }
 }
 

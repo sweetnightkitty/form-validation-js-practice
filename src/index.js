@@ -18,44 +18,104 @@ const country = document.getElementById("country");
 const zip = document.getElementById("zip");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirm-password");
+const errorDivs = document.querySelectorAll(".error");
 
 
 form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    validateForm();
+    //If no errors, form submits
+
+    if(checkForErrors() == true) {
+        e.preventDefault();
+        validateForm();
+        
+        //Add event listeners to each form element, so as user corrects their inputs, they get live in-line feedback
+        //When they correct the input, error disappears immediately without tabbing/clicking away
+        firstName.addEventListener("keydown", ()=> {
+            firstName.addEventListener("keyup", () => {
+                validateFirstName(firstName);
+            })
+        })
+
+        lastName.addEventListener("keydown", ()=> {
+            lastName.addEventListener("keyup", () => {
+                validateLastName(lastName);
+            })
+        })
+
+        email.addEventListener("keydown", () => {
+            email.addEventListener("keyup", ()=> {
+                validateEmail(email);
+            })
+        })
+
+        phone.addEventListener("keydown", ()=> {
+            phone.addEventListener("keyup", ()=> {
+                validatePhone(phone);
+            })
+        })
+
+        country.addEventListener("click", ()=>{
+            country.addEventListener("change", ()=> {
+                validateCountry(country);
+            })
+        })
+
+        zip.addEventListener("keydown", () => {
+            zip.addEventListener("keyup", ()=> {
+                validateZip(country, zip);
+            })
+        })
+
+        password.addEventListener("keydown", ()=> {
+            password.addEventListener("keyup", ()=> {
+                validatePassword(password);
+            })
+        })
+
+        confirmPassword.addEventListener("keydown", ()=> {
+            confirmPassword.addEventListener("keyup", ()=> {
+                validateConfirmPassword(password, confirmPassword);
+            })
+        })
+
+
+    }
 })
 
-//How to fire when tab away empty? - same logic for others
-firstName.addEventListener("change", () => {
-    //validate firstName
+//The following event listeners alert the user of an error after they tab/click away
+//Gives the user a chance to correct input before submitting
+firstName.addEventListener("blur", () => {
+    validateFirstName(firstName);
+});
+
+lastName.addEventListener("blur", () => {
+    validateLastName(lastName);
 })
 
-lastName.addEventListener("change", () => {
-    //valide last name
+email.addEventListener("blur", () => {
+    validateEmail(email);
 })
 
-email.addEventListener("change", () => {
-    //validate email
+phone.addEventListener("blur", () => {
+    validatePhone(phone);
 })
 
-phone.addEventListener("change", () => {
-    //validate phone
+
+country.addEventListener("blur", () => {
+    validateCountry(country);
 })
 
-country.addEventListener("change", () => {
-    //validate country
-})
 
-zip.addEventListener("change", () => {
+zip.addEventListener("blur", () => {
     validateZip(country, zip);
 })
 
-password.addEventListener("change", () => {
-    //validate password
+password.addEventListener("blur", () => {
+    validatePassword(password);
 })
 
-confirmPassword.addEventListener("change", () => {
-    //validate second password
+confirmPassword.addEventListener("blur", () => {
+    validateConfirmPassword(password, confirmPassword);
 })
 
 
@@ -69,3 +129,20 @@ function validateForm() {
     validatePassword(password);
     validateConfirmPassword(password, confirmPassword); 
 }
+
+
+function checkForErrors() {
+    if(
+        validateFirstName(firstName)
+        || validateLastName(lastName)
+        || validateEmail(email) 
+        || validatePhone(phone)
+        || validateCountry(country)
+        || validateZip(country, zip)
+        || validatePassword(password)
+        || validateConfirmPassword(password, confirmPassword) 
+    ) {
+        return true;
+    }
+}
+
