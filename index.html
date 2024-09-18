@@ -1,1 +1,83 @@
-<head><script defer src="main.js"></script></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+<script defer src="main.js"></script></head>
+<body>
+    
+
+    <div class="content">
+        <h1>Welcome to this awesome community!</h1>
+
+        <div class="intro">
+            Here is some cool info about our website and community that will make you want to sign up woo!
+        </div>
+        <form action="#" novalidate>
+            <ul>
+                <li>
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                    <div class="error"></div>
+                </li>
+                <li>
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                    <div class="error"></div>
+                </li>
+            </ul>
+    
+            <ul>
+                <li>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error"></div>
+                </li>
+                <li>
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" pattern="^[1-9]\d{9}" required>
+                    <div class="error"></div>
+                </li>
+            </ul>
+    
+            <ul>
+                <li>
+                    <label for="country">Country:</label>
+                    <select id="country" name="country" required>
+                        <option value="">Select a country</option>
+                        <option value="ch">Switzerland</option>
+                        <option value="fr">France</option>
+                        <option value="de">Germany</option>
+                        <option value="nl">The Netherlands</option>
+                        <option value="us">USA</option>
+                    </select>
+                    <div class="error"></div>
+                </li>
+                <li>
+                    <label for="zip">ZIP Code:</label>
+                    <input type="text" id="zip" name="zip" required>
+                    <div class="error"></div>
+                </li>
+            </ul>
+    
+            <ul>
+                <li>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" minlength="8" required>
+                    <div class="error"></div>
+                </li>
+                <li>
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" name="confirm-password" id="confirm-password" minlength="8" required>
+                    <div class="error"></div>
+                </li>
+            </ul>
+    
+            <button id="submit-form">Create Account</button>
+        </form>
+    </div>
+
+
+</body>
+</html>
