@@ -28,10 +28,20 @@ li {
     margin-left: 40px;
 }
 
+/* When div.error contains text it's always red */
 .error {
     color: red;
 }
 
-:invalid {
-    outline: red;
+/* class is appended when div.error gets textContent */
+.errorOutline {
+    border-color: red;
 }
+
+
+/* class is appended when div.error textContent is ERASED */ 
+.correctOutline, .correctOutline:focus {
+    border-color: green;
+    outline: green;
+}
+
