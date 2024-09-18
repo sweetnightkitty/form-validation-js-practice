@@ -142,4 +142,11 @@ function getErrorDiv(input) {
 
 function setErrorMessage(input, message) {
     getErrorDiv(input).textContent = message;
+    if(message == ""){
+        input.classList.remove("errorOutline")
+        input.classList.add("correctOutline");
+    } else {
+        input.classList.add("errorOutline");
+        input.classList.remove("correctOutline");
+    }
 }
