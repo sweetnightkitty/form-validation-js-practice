@@ -16,3 +16,4 @@ This project is a practice assignment built in accordance with the ODIN Project 
 Assignment details can be found under "A little more practice"
 
 https://www.theodinproject.com/lessons/node-path-javascript-form-validation-with-javascript#assignment
+
